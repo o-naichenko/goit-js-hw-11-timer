@@ -1,0 +1,16 @@
+body {
+  font-family: helvetica;
+  padding-top: 50px;
+}
+.timer {
+  display: flex;
+  justify-content: center;
+  text-shadow: 0px 10px 20px rgba(197, 196, 172, 0.7);
+}
+.field:not(:first-child) {
+  margin-left: 40px;
+}
+.value {
+  font-weight: 800;
+  font-size: 100px;
+}
