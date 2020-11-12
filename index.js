@@ -11,16 +11,17 @@ const minsRef = timerRef.querySelector("[data-value = 'mins']");
 const secsRef = timerRef.querySelector("[data-value = 'secs']");
 
 class CountdownTimer {
-  constructor(selector, targetDate) {
+  constructor(selector, targetDate, onTick) {
     this.selector = selector;
     this.targetDate = targetDate;
+    this.onTick = onTick;
   }
   start() {
     setInterval(() => {
       const currentDate = new Date();
       time = this.targetDate - currentDate;
-      const { days, hours, mins, secs } = getTimeComponents(time);
-      updateTimerRefsContent({ days, hours, mins, secs });
+      const timeComponents = getTimeComponents(time);
+      this.onTick(timeComponents);
     }, 1000);
   }
 }
@@ -43,8 +44,10 @@ function pad(value) {
   return String(value).padStart(2, "0");
 }
 
-const timer = new CountdownTimer("#timer-1", new Date("Jan 01, 2021"));
+const timer = new CountdownTimer(
+  "#timer-1",
+  new Date("Jan 01, 2021"),
+  updateTimerRefsContent
+);
 
-// timer.start();
-
-window.addEventListener("DOMContentLoaded", timer.start());
+window.addEventListener("DOMContentLoaded", timer.start.bind(timer));
