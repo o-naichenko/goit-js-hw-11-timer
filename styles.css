@@ -1,4 +1,5 @@
 body {
+  margin: 0;
   font-family: helvetica;
   padding-top: 50px;
 }
@@ -7,10 +8,20 @@ body {
   justify-content: center;
   text-shadow: 0px 10px 20px rgba(197, 196, 172, 0.7);
 }
-.field:not(:first-child) {
-  margin-left: 40px;
+.field {
+  padding: 0 40px;
 }
 .value {
   font-weight: 800;
   font-size: 100px;
+}
+@media screen and (max-width: 1000px) {
+  .timer {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .field {
+    width: 200px;
+    margin: 0 auto;
+  }
 }
